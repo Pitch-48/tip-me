@@ -2,19 +2,15 @@
 import React, { useState } from "react";
 import AppLayout from "@/components/layout/AppLayout";
 import WalletCard from "@/components/wallet/WalletCard";
+import NearbyWorkers from "@/components/workers/NearbyWorkers";
 import { QrCode, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 
 // Mock data for the dashboard
-const favoriteWorkers = [
-  { id: "w1", name: "John Smith", occupation: "Bartender" },
-  { id: "w2", name: "Emma Lee", occupation: "Server" },
-];
-
 const topWorkers = [
-  { id: "w3", name: "Alex Johnson", occupation: "Bartender", earnings: 1240.50, position: 1 },
-  { id: "w4", name: "Maria Garcia", occupation: "Server", earnings: 985.75, position: 2 },
+  { id: "w3", name: "Alex Johnson", occupation: "Bartender", rating: "S", position: 1 },
+  { id: "w4", name: "Maria Garcia", occupation: "Server", rating: "A", position: 2 },
 ];
 
 const recentTransactions = [
@@ -23,7 +19,7 @@ const recentTransactions = [
 ];
 
 const Index = () => {
-  const [walletBalance, setWalletBalance] = useState(250.75);
+  const [walletBalance, setWalletBalance] = useState(0);
 
   const handleWithdraw = () => {
     toast({
@@ -67,6 +63,11 @@ const Index = () => {
           </div>
         </div>
 
+        {/* Nearby Workers Section */}
+        <div className="mb-6">
+          <NearbyWorkers />
+        </div>
+
         {/* Favorites Section */}
         <div className="mb-6">
           <div className="flex justify-between items-center mb-3">
@@ -74,31 +75,9 @@ const Index = () => {
             <Link to="/favorites" className="text-sm text-tipme-blue">View All</Link>
           </div>
           
-          {favoriteWorkers.length > 0 ? (
-            <div className="grid grid-cols-2 gap-3">
-              {favoriteWorkers.map(worker => (
-                <div key={worker.id} className="tipme-card p-3 flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-tipme-blue/20 flex items-center justify-center text-xl font-bold mb-2">
-                    {worker.name.charAt(0)}
-                  </div>
-                  <div className="text-center">
-                    <h3 className="font-medium text-sm">{worker.name}</h3>
-                    <p className="text-xs text-muted-foreground">{worker.occupation}</p>
-                  </div>
-                  <Link 
-                    to={`/quick-tip?worker=${worker.id}`} 
-                    className="mt-2 text-xs bg-tipme-gold text-tipme-blue-dark px-3 py-1.5 rounded-full font-medium"
-                  >
-                    Tip Now
-                  </Link>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="tipme-card text-center py-6">
-              <p className="text-muted-foreground">Add favorite workers for quick tipping</p>
-            </div>
-          )}
+          <div className="tipme-card text-center py-6">
+            <p className="text-muted-foreground">Add favorite workers for quick tipping</p>
+          </div>
         </div>
 
         {/* Leaderboard Preview */}
@@ -120,7 +99,9 @@ const Index = () => {
                     <p className="text-xs text-muted-foreground">{worker.occupation}</p>
                   </div>
                 </div>
-                <div className="numeric font-medium">${worker.earnings.toFixed(2)}</div>
+                <div className="px-2 py-1 bg-secondary text-secondary-foreground text-xs rounded font-bold">
+                  {worker.rating}
+                </div>
               </div>
             ))}
           </div>
