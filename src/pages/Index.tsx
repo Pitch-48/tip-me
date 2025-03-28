@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <AppLayout>
       <div className="container max-w-md mx-auto px-4 pt-4 pb-20">
-        <h1 className="text-2xl font-bold mb-6">Welcome to TipMe</h1>
+        <h1 className="text-2xl font-bold mb-6">Welcome to Tip Me</h1>
         
         <WalletCard 
           balance={walletBalance}
