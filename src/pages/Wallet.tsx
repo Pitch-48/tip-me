@@ -2,11 +2,9 @@
 import React, { useState } from "react";
 import AppLayout from "@/components/layout/AppLayout";
 import WalletCard from "@/components/wallet/WalletCard";
-import { QrCode } from "lucide-react";
-import { Link } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 
-const Index = () => {
+const Wallet = () => {
   const [walletBalance, setWalletBalance] = useState(250.75);
 
   const handleWithdraw = () => {
@@ -22,11 +20,11 @@ const Index = () => {
       description: "Please complete the deposit process."
     });
   };
-
+  
   return (
     <AppLayout>
       <div className="container max-w-md mx-auto px-4 pt-4">
-        <h1 className="text-2xl font-bold mb-6">Welcome to TipMe</h1>
+        <h1 className="text-2xl font-bold mb-6">Wallet</h1>
         
         <WalletCard 
           balance={walletBalance}
@@ -34,21 +32,13 @@ const Index = () => {
           onDeposit={handleDeposit}
         />
         
-        <div className="bg-secondary rounded-lg p-4 mb-4 flex items-center justify-center">
-          <div className="text-center">
-            <h2 className="font-bold mb-2">Quick Tip</h2>
-            <p className="text-sm text-muted-foreground mb-4">
-              Scan a QR code or enter a tip code to quickly send a tip
-            </p>
-            <Link to="/quick-tip" className="tipme-button-primary">
-              <QrCode size={18} />
-              <span>Scan to Tip</span>
-            </Link>
-          </div>
+        <div className="tipme-card">
+          <h2 className="font-bold mb-4">Transaction History</h2>
+          <p className="text-muted-foreground text-center py-6">No recent transactions</p>
         </div>
       </div>
     </AppLayout>
   );
 };
 
-export default Index;
+export default Wallet;

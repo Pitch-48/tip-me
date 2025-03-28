@@ -1,6 +1,6 @@
 
 import React from "react";
-import { DollarSign, ArrowUpRight, ArrowDownRight, Clock } from "lucide-react";
+import { DollarSign, ArrowUpRight, ArrowDownRight } from "lucide-react";
 
 interface WalletCardProps {
   balance: number;
