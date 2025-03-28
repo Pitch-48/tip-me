@@ -19,6 +19,11 @@ export default {
       }
     },
     extend: {
+      fontFamily: {
+        sans: ["Open Sans", "sans-serif"],
+        heading: ["Poppins", "sans-serif"],
+        mono: ["Roboto Mono", "monospace"]
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -63,15 +68,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))"
         },
-        // Custom colors for Tip Me app
+        // Custom colors for Tip Me app per specifications
         tipme: {
-          purple: {
-            DEFAULT: "#9b87f5",
-            dark: "#6E59A5",
-            light: "#D6BCFA",
+          blue: {
+            DEFAULT: "#003366", // Primary: Deep Blue
+            light: "#3a5b80",
+            dark: "#002244",
           },
-          dark: "#1A1F2C",
-          gray: "#221F26",
+          gold: {
+            DEFAULT: "#FFD700", // Secondary: Gold
+            light: "#ffe03d",
+            dark: "#d4b400",
+          },
+          green: {
+            DEFAULT: "#00C851", // Accent: Soft Green
+            light: "#2ad46a",
+            dark: "#00a042",
+          }
         },
       },
       borderRadius: {
@@ -96,12 +109,22 @@ export default {
           "0%": { transform: "translateY(10px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" }
         },
+        "pulse": {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" }
+        },
+        "confetti": {
+          "0%": { transform: "translateY(0)", opacity: "1" },
+          "100%": { transform: "translateY(-100vh)", opacity: "0" }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
-        "slide-up": "slide-up 0.3s ease-out"
+        "slide-up": "slide-up 0.3s ease-out",
+        "pulse": "pulse 2s ease-in-out infinite",
+        "confetti": "confetti 3s ease-out forwards"
       }
     }
   },
